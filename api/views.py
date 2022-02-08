@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from .models import Movie, Rating
 from rest_framework import viewsets, status
 from rest_framework.response import Response
@@ -18,7 +17,7 @@ class MovieViewSet(viewsets.ModelViewSet):
     queryset = Movie.objects.all()
     serializer_class = MovieSerializers
     authentication_classes = (TokenAuthentication,)
-    permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAuthenticated,)
 
     @action(detail=True, methods=['POST'])
     def rate_movie(self, request, pk=None):
